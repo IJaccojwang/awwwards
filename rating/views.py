@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/accounts/login')
 def index(request):
@@ -15,7 +16,7 @@ def edit_profile(request):
     pass
 
 @login_required(login_url='/accounts/login')
-def post(request):
+def new_project(request):
     pass
 
 @login_required(login_url='/accounts/login')
