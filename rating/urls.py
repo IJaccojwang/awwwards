@@ -5,8 +5,8 @@ from . import views
 
 urlpatterns=[
     url('^$', views.index, name = 'index'),
-    url(r'^profile$',views.profile,name='profile'),
-    url(r'profile/edit$',views.edit_profile,name='edit'),
+    url(r'^myprofile$',views.profile,name='myprofile'),
+    url(r'^profile/edit$',views.edit_profile,name='edit'),
     url(r'^project/new$', views.new_project, name='post'),
     url(r'^project$',views.project,name='project'),
     url(r'^search/',views.search,name='search')
