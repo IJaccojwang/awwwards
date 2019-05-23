@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from .models import Project, Profile, Rating, categories, technologies
 
 @login_required(login_url='/accounts/login')
 def index(request):
     current_user = request.user
-    projects = Projects.objects.all()
+    projects = Project.objects.all()
     return render(request, 'index.html', locals())
 
 @login_required(login_url='/accounts/login')
