@@ -1,11 +1,11 @@
 from django import forms
-from .models import Projects, Profile
+from .models import Project, Profile
 
 
 class UploadForm(forms.ModelForm):
     class Meta:
-        model = Projects
-        exclude = ('design', 'usability', 'creativity', 'content', 'overall', 'posted' )
+        model = Project
+        exclude = ('design', 'usability', 'creativity', 'content', 'overall', 'posted', 'user' )
 
 
 class ProfileForm(forms.ModelForm):
