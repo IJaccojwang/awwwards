@@ -56,4 +56,12 @@ def project(request, project_id):
 
 @login_required(login_url='/accounts/login')
 def search(request):
-    pass
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get("project")
+        projects = Project.search_project(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html', {"message":message, "projects":projects})
+    else:
+        message = "Please enter search term"
+        return render(request, 'search,html', {"message":message, "projects":projects})
