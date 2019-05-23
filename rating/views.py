@@ -22,7 +22,11 @@ def new_project(request):
 
 @login_required(login_url='/accounts/login')
 def project(request):
-    pass
+    try:
+        project = Projects.objects.get(id=project_id)
+    except Projects.DoesNotExist:
+        raise Http404()
+    return render(request, "project.html", locals())
 
 @login_required(login_url='/accounts/login')
 def search(request):
