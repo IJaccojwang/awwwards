@@ -47,6 +47,7 @@ class Project(models.Model):
         return self.title
 
 class Profile(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     profilepic = models.ImageField(upload_to='profiles/')
     bio = models.CharField(max_length=255)
     prefname = models.CharField(max_length=255)
