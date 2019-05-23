@@ -10,7 +10,13 @@ def index(request):
 
 @login_required(login_url='/accounts/login')
 def profile(request):
-    pass
+    try:
+        current_user=request.user.id
+        my_projects = Projects.objects.filter(user=current_user)
+        my_profile = Profile.objects.get(user_id=current_user)
+    except Exception as e:
+        raise Http404()
+    return render(request, 'profile.html', locals())
 
 @login_required(login_url='/accounts/login')
 def edit_profile(request):
