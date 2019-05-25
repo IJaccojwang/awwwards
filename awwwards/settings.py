@@ -32,6 +32,7 @@ DEBUG = True
 
 INSTALLED_APPS = [
     'bootstrap3',
+    'rest_framework',
     'rating.apps.RatingConfig',
     'django.contrib.admin',
     'django.contrib.auth',
