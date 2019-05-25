@@ -7,6 +7,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import ProfileSerializer, ProjectSerializer
 from rest_framework import status
+from .permissions import IsAdminOrReadOnly
+
 
 @login_required(login_url='/accounts/login')
 def index(request):
@@ -71,6 +73,7 @@ def search(request):
         return render(request, 'search,html', {"message":message, "projects":projects})
 
 class ProfileList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self, request, format=None):
         all_profiles = Profile.objects.all()
         serializers = ProfileSerializer(all_profiles, many=True)
@@ -83,6 +86,7 @@ class ProfileList(APIView):
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProjectList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self, request, format=None):
         all_projects = Project.objects.all()
         serializers = ProjectSerializer(all_projects, many=True)
