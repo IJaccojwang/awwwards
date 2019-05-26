@@ -56,6 +56,8 @@ def new_project(request):
 def project(request, project_id):
     try:
         project = Project.objects.get(id=project_id)
+        # if user has voted on a project(you have voted on this project before) ask if he wants to reasess...if yes delete previous and take in new
+        # each 
     except Project.DoesNotExist:
         raise Http404()
     return render(request, "project.html", locals())
