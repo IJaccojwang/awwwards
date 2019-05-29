@@ -43,17 +43,3 @@ class technologiesTestCase(TestCase):
         self.Tester.delete_technology('Tester')
         technology = technologies.objects.all()
         self.assertTrue(len(technology)==0)
-
-class ProjectsTestCase(TestCase):
-    self.Tester = technologies(technologies='Tester')
-    self.Test = categories(categories='Test')
-    def setUp(self, title='TestProject', landing_page='test.jpg', description='description', live_link='www.test.com', design=0, usability=0, creativity=0, content=0, overall=0, categories=self.Test, technologies=self.Tester):
-    
-    self.Test = Project.objects.create(title = title, landing_page = landing_page, description = description, live_link = live_link, design = design, usability = usability, creativity = creativity, content = content, overall = overall)
-
-    def test_instance(self):
-        self.assertTrue(isinstance(self.Test,Project))
-
-    def test_save(self):
-        initialization = self.setUp()
-        self.assertTrue(save > 0)
